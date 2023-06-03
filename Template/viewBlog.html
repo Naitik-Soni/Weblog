@@ -146,7 +146,7 @@
 
     <section class="sharepost">
         <div class="postlink">
-            <p id="link">http://127.0.0.1:8000/Blog/IPL%202023%20Business%20model</p>&nbsp;<i class="fa-regular fa-copy" onclick="copyLink()"></i>&nbsp;
+            <p id="link"></p>&nbsp;<i class="fa-regular fa-copy" onclick="copyLink()"></i>&nbsp;
         </div>
     </section>
 
@@ -156,7 +156,9 @@
         var height = document.getElementsByClassName("readblog")[0].clientHeight;
         document.getElementsByClassName("blogs")[0].style.maxHeight = height + 80 + "px";
       });
-
+  
+      document.getElementById("link").innerHTML = window.location.href;
+      
     </script>
   </body>
 </html>
