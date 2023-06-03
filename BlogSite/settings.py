@@ -52,6 +52,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://mynotesapp.azurewebsites.net",
+]
+
 ROOT_URLCONF = 'BlogSite.urls'
 
 TEMPLATES = [
