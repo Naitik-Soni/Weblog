@@ -70,7 +70,7 @@ def serveForgotPassfile(request):
     fp_file_path = "Forgot-Password.html"
     return render(request, fp_file_path, context)
 
-
+@csrf_exempt
 def newUserRegister(request):
     user_name = request.POST['user-name']
     user_mail = request.POST['useremail']
@@ -89,7 +89,7 @@ def newUserRegister(request):
 
     return redirect('homepage')
 
-
+@csrf_exempt
 def loginUser(request):
     user_mails = request.POST['useremail'].strip()
     user_pass = request.POST['userpass'].strip()
