@@ -81,7 +81,7 @@
 
     <section class="signin signup">
         <div class="sign-container">
-            <form action="loginuser/" method="post" id="sign-in">
+            <form action="./loginuser/" method="post" id="sign-in">
                 {% csrf_token %}
                 Email
                 <img src="{% static 'media/Email.png' %}" alt="" style="left: -33px;">
@@ -95,7 +95,7 @@
                 <p>Don't have an account? <button id="linksignup" onclick="changesign()">Sign up</button></p>
             </form>
 
-            <form action="registeruser/" method="post" id="signup">
+            <form action="./registeruser/" method="post" id="signup">
                 {% csrf_token %}
                 Name <br>
                 <input type="text" name="user-name" id="username" placeholder="Enter your name" required>
