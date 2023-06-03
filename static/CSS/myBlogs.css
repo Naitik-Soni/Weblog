@@ -1,0 +1,63 @@
+.myblogs{
+    display: grid;
+    gap: 20px 20px;
+    grid-template-columns: 50% 50%;
+    position: relative;
+    top: 80px;
+    padding: 30px;
+}
+
+.myblogs .blog{
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: 50% 50%;
+    max-height: 280px;
+    cursor: pointer;
+}
+
+.myblogs .blog .img{
+    overflow: hidden;
+    border-radius: 10px;
+    transition: 0.4s;
+    display: flex;
+    align-items: center;
+}
+
+.myblogs .blog .img img{
+    width: 100%;
+}
+
+.myblogs .blog .content{
+    display: grid;
+    grid-template-rows: 40px auto;
+}
+
+.myblogs .blog .content h2{
+    width: 95%;
+    overflow: hidden;
+}
+
+.myblogs .blog .content .blogcontent{
+    width: 95%;
+    margin-top: 10px;
+    height: 240px;
+    overflow: hidden;
+}
+
+@media(max-width: 1080px){
+    .myblogs{
+        grid-template-columns: 100%;
+    }
+}
+
+@media(max-width: 680px){
+    .myblogs .blog{
+        grid-template-columns: 100%;
+        max-width: 400px;
+        grid-template-rows: 75% 25%;
+    }
+
+    .myblogs .blog .blogcontent{
+        display: none;
+    }
+}
