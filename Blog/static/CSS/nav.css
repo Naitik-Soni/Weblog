@@ -1,0 +1,248 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    width: 100vw;
+    height: 100%;
+    overflow-x: hidden;
+    background-color: #F1F6F9;
+}
+
+nav{
+    top: 0;
+    left: 0;
+    background-color: #212A3E;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    z-index: 9;
+}
+
+nav #web-logo{
+    width: auto;
+    height: 100%;
+    margin-left: 5%;
+}
+
+nav #nav-list{
+    z-index: 100;
+    height: 80px;
+    position: absolute;
+    right: 80px;
+    display: flex;
+    width: 400px;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    background-color: #212A3E;
+}
+
+nav #nav-list .direct a{
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    text-decoration: none;
+    color: #F1F6F9;
+}
+
+nav #nav-list .direct img{
+    width: 30px;
+    height: auto;
+}
+
+#signin{
+    border: 1px solid #F1F6F9;
+    text-align: center;
+    width: auto;
+    padding: 7px 27px;
+    border-radius: 21px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+#signin:hover{
+    background-color:  #F1F6F9  ;
+    color: #212A3E;
+}
+
+nav .fa-solid{
+    display: none;
+    color: #F1F6F9;
+    font-size: 25px;
+    position: absolute;
+    right: 30px;
+    cursor: pointer;
+}
+
+nav .profile{
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+
+nav .profile #profileimg{
+    width: 45px;
+    height: 45px;
+}
+
+nav .profile ul{
+    clip-path: polygon(
+        0px 5px,
+        44% 5px,
+        50% 0px,
+        56% 5px,
+        100% 5px,
+        100% 100%,
+        0px 100%
+    );
+    padding-top: 5px;
+    background-color: #F1F6F9;
+    border-radius: 7px;
+    position: absolute;
+    top: 50px;
+    width: 120px;
+    right: -10px;
+    list-style: none;
+    overflow: hidden;
+    display: none;
+    transition: 0.5s;
+}
+
+nav .profile ul li{
+    width: 120px;
+}
+
+nav .profile ul li a{
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 14px;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #212A3E;
+}
+
+nav button{
+    width: auto;
+    font-size: 1rem;
+    padding: 7px 16px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 100;
+}
+
+nav button:hover{
+    background-color: white;
+    color: #212A3E;
+}
+
+
+@media(max-width: 920px){
+    nav{
+        height: 60px;
+    }
+    nav #web-logo{
+        margin-left: 10px;
+        height: 70%;
+    }
+
+    nav #nav-list{
+        flex-direction: column;
+        justify-content: flex-start;
+        height: calc(100vh - 60px);
+        background-color: #212A3E;
+        max-width: 280px;
+        width: 60%;
+        position: absolute;
+        right: -60%;
+        top: 60px;
+        z-index: 100;
+        transition: 0.3s;
+    }
+    nav #nav-list li a{
+        justify-content: center;
+        margin: 10px;
+    }
+    #bars{
+        display: block;
+        transition: 0.3s;
+    }
+    #cross{
+        display: none;
+        transition: 0.3s;
+    }
+
+    nav .profile{
+        width: auto;
+        height: auto;
+        overflow: visible;
+    }
+
+    nav .profile img{
+        display: none;
+    }
+    nav .profile #profileul{
+        display: block;
+        position: relative;
+        clip-path: inherit;
+        padding: 0;
+        border-radius: 0;
+        position: relative;
+        background-color: transparent;
+        top: 0;
+        right: 0;
+        list-style: none;
+        overflow: visible;
+        display: block;
+        transition: 0;
+        text-align: center;
+    }
+
+    nav .profile ul li{
+        /* background-color: rgba(140, 255, 0, 0.3); */
+        text-align: center;
+        padding-left: -20px;
+        margin-left: -10px;
+    }
+
+    nav .profile ul li a{
+        /* background-color: rgba(0, 213, 4, 0.5); */
+        color: white;
+        display: flex;
+        margin-left: -200px;
+        align-items: start;
+        justify-content: start;
+        padding: 7px 14px;
+        box-sizing: border-box;
+        text-decoration: none;
+    }
+
+    nav #nav-list li:nth-child(2){
+        position: fixed;
+        top: 10px;
+        right: 80px;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+background: #9BA4B5;
+}
+
+::-webkit-scrollbar-thumb {
+background: #394867;
+}

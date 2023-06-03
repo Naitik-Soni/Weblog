@@ -1,0 +1,162 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/09d21e6cd0.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'CSS/signin.css' %}">
+    <link rel="icon" href="{% static 'media/icon.png' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'CSS/nav.css' %}" />
+    <link rel="stylesheet" href="{% static 'CSS/viewBlog.css' %}" />
+    <script src="{% static 'JS/forgotpass.js' %}"></script>
+
+    <style>
+      nav #nav-list #signin:hover {
+        color: #212a3e;
+      }
+    </style>
+    <title>Blog Title</title>
+  </head>
+  <body>
+    <nav>
+      <img src="{% static 'media/New blog.png' %}" alt="" id="web-logo" />
+
+      <ul id="nav-list">
+        <li class="direct">
+          <a href="../">Home</a>
+        </li>
+
+        <li class="direct">
+          <a href="../WriteBlog/"><img src="{% static 'media/writing.png' %}" alt="" /> Write</a>
+        </li>
+
+        {% if session %}
+            <li onmouseover="showPostLink()" onmouseout="hidePostLink()">
+                <div class="profile">
+                    <img src="{% static 'media/User.png' %}" id="profileimg">
+                    <ul id="profileul">
+                        <li><a href="../myblogs/">Your Posts</a></li>
+                    </ul>
+
+                </div>
+            </li>
+
+            {% else %}
+
+            <li class="direct">
+                <a id="signin" onclick="showForm()">Sign In</a>
+            </li>
+
+            {% endif %}
+      </ul>
+
+      <i class="fa-solid fa-bars" onclick="showNavigation()" id="bars"></i>
+
+      <i
+        class="fa-sharp fa-solid fa-xmark"
+        onclick="hideNavigation()"
+        id="cross"
+      ></i>
+    </nav>
+
+    <section class="readblog">
+      <div class="details">
+        <div class="user">
+          <img src="{% static 'media/User-color.png' %}" alt="" width="60" height="60" />
+          <h2 style="margin-left: 15px">{{ user_name }}</h2>
+        </div>
+
+        <p>{{ originalBlog.blog_date }} &nbsp;&nbsp; <span onclick="shareMyPost()"><i class="fa-solid fa-share-nodes"></i></span> </p>
+      </div>
+
+      <div class="blog">
+        <h1>{{ originalBlog.blog_title }}</h1>
+        <div class="img">
+          <img
+            src="../media/{{ originalBlog.blog_image }}" alt=""/>
+        </div>
+
+        <div class="content">
+          {{ originalBlog.blog_content|safe }}
+        </div>
+      </div>
+    </section>
+
+    <section class="blogs">
+        {% for x in otherblogs %}
+            <div class="blogpost" onclick="location.replace(`./{{ x.blog_title }}`)">
+                <img
+                  src="../media/{{ x.blog_image }}"
+                  alt=""
+                />
+                <h2>{{ x.blog_title }}</h2>
+                <div style="text-overflow: ellipsis;">
+                  {{ x.blog_content|safe }}
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+
+    <section class="signin signup">
+        <div class="sign-container">
+            <form action="../loginuser/" method="post" id="sign-in">
+                {% csrf_token %}
+                Email
+                <img src="{% static 'media/Email.png' %}" alt="" style="left: -33px;">
+                <input type="email" name="useremail" id="emailid" placeholder="someone@mail.com" required><br><br>
+                Password
+                <img src="{% static 'media/Lock.png' %}" alt="">
+                <input type="password" name="userpass" id="password" placeholder="Enter Password" required><br>
+                <a href="../forgot-password" class="forgotpass">Forgot Password?</a><br>
+                <br>
+                <input type="submit" value="Sign In"><br><br>
+                <p>Don't have an account? <button id="linksignup" onclick="changesign()">Sign up</button></p>
+            </form>
+
+            <form action="../registeruser/" method="post" id="signup">
+                {% csrf_token %}
+                Name <br>
+                <input type="text" name="user-name" id="username" placeholder="Enter your name" required>
+                Email
+                <img src="{% static 'media/Email.png' %}" alt="" id="mailimg">
+                <input type="email" name="useremail" id="emailid" placeholder="someone@mail.com" required><br>
+                Password
+                <img src="{% static 'media/Lock.png' %}" alt="" id="lockimg">
+                <input type="password" name="userpass" id="password" placeholder="Enter Password" required><br>
+                <br>
+                <input type="submit" value="Sign Up">
+
+            </form>
+        </div>
+        <i class="fa-sharp fa-solid fa-xmark" id="sign-cross" onclick="closeSignIn()"></i>
+    </section>
+
+    <section class="sharepost">
+        <div class="postlink">
+            <p id="link">http://127.0.0.1:8000/Blog/IPL%202023%20Business%20model</p>&nbsp;<i class="fa-regular fa-copy" onclick="copyLink()"></i>&nbsp;
+        </div>
+    </section>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var height = document.getElementsByClassName("readblog")[0].clientHeight;
+        document.getElementsByClassName("blogs")[0].style.maxHeight = height + 80 + "px";
+      });
+
+    </script>
+  </body>
+</html>

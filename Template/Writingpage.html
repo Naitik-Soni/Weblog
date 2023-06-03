@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/09d21e6cd0.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'media/icon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'CSS/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/home-page.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/writepage.css' %}">
+    <script src="{% static 'JS/write.js' %}"></script>
+    <script src="{% static 'JS/forgotpass.js' %}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Writing your Blog</title>
+</head>
+<body>
+    <nav>
+        <img src="{% static 'media/New blog.png' %}" alt="" id="web-logo">
+
+        <ul id="nav-list">
+            <li class="direct">
+                <a href="../">Home</a>
+            </li>
+
+            <li>
+                <button onclick="postBlog()">Publish</button>
+            </li>
+
+            <li>
+                <div class="profile" onmouseover="showPostLink()" onmouseout="hidePostLink()">
+                    <img src="{% static 'media/User.png' %}" id="profileimg">
+                    <ul id="profileul">
+                        <li><a href="../myblogs/">Your Posts</a></li>
+                    </ul>
+
+                </div>
+            </li>
+        </ul>
+
+        <i class="fa-solid fa-bars" onclick="showNavigation()" id="bars"></i>
+
+        <i class="fa-sharp fa-solid fa-xmark" onclick="hideNavigation()" id="cross"></i>
+
+    </nav>
+
+
+    <section class="writingsec">
+
+        <div class="editor">
+            <button class="bold" onclick="boldSelectedText()">
+                <strong>B</strong>
+            </button>
+
+            <button class="italic" onclick="italicSelectedText()">
+                <i>i</i>
+            </button>
+
+            <button class="large" onclick="biggerSelectedText()">
+                <big>T</big>
+            </button>
+
+            <button class="small" onclick="smallerSelectedText()">
+                <small>T</small>
+            </button>
+
+            <button class="underline" onclick="underlineSelectedText()">
+                <u>U</u>
+            </button>
+
+            <button class="color">
+                A
+                <input type="color" name="" id="colorpicker" oninput="changeColor()">
+            </button>
+        </div>
+
+        <form method="post" action="./postblog/" id="userform" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="blog_title" id="title" placeholder="Title">
+            <div class="div">
+                <img src="{% static 'media/Image-icon.png' %}" alt="" id="imageicon">
+            </div>
+            <input type="file" id="imageinput" name="blog-image" oninput="imageAdded()">
+
+
+            <textarea id="textarea" name="content" cols="30" rows="10" style="display:none;"></textarea>
+
+            <div id="blogcontent" contenteditable="true" onfocus="clearInitial()">Start Writing From here...
+            </div>
+
+        </form>
+
+    </section>
+</body>
+</html>

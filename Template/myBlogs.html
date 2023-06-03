@@ -1,0 +1,112 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/09d21e6cd0.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'media/icon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'CSS/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/signin.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/myblogs.css' %}">
+    <script src="{% static 'JS/forgotpass.js' %}"></script>
+
+    <style>
+        nav #nav-list #signin:hover {
+          color: #212a3e;
+        }
+      </style>
+    <title>Weblog - My Blogs</title>
+</head>
+<body>
+    <nav>
+        <img src="{% static 'media/New blog.png' %}" alt="" id="web-logo">
+
+        <ul id="nav-list">
+            <li class="direct">
+                <a href="../">Home</a>
+            </li>
+
+            <li class="direct">
+                <a href="../WriteBlog"><img src="{% static 'media/writing.png' %}" alt="">Write</a>
+            </li>
+
+            <li onmouseover="showPostLink()" onmouseout="hidePostLink()">
+                <div class="profile">
+                    <img src="{% static 'media/User.png' %}" id="profileimg">
+                    <ul id="profileul">
+                        <li><a href="../myblogs/">Your Posts</a></li>
+                    </ul>
+
+                </div>
+            </li>
+        </ul>
+
+        <i class="fa-solid fa-bars" onclick="showNavigation()" id="bars"></i>
+
+        <i class="fa-sharp fa-solid fa-xmark" onclick="hideNavigation()" id="cross"></i>
+
+    </nav>
+
+
+    <section class="myblogs">
+        {% for x in myblogs %}
+            <div class="blog" onclick = "location.replace(`../Blog/{{ x.blog_title }}`)">
+                <div class="img">
+                    <img src="../media/{{ x.blog_image }}" alt="">
+                </div>
+
+                <div class="content">
+                    <h2>{{ x.blog_title }}</h2>
+                    <div class="blogcontent" style="text-overflow: ellipsis;">
+                        {{ x.blog_content|safe }}
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+
+    </section>
+
+
+    <section class="signin signup">
+        <div class="sign-container">
+            <form action="../loginuser/" method="post" id="sign-in">
+                {% csrf_token %}
+                Email
+                <img src="{% static 'media/Email.png' %}" alt="" style="left: -33px;">
+                <input type="email" name="useremail" id="emailid" placeholder="someone@mail.com" required><br><br>
+                Password
+                <img src="{% static 'media/Lock.png' %}" alt="">
+                <input type="password" name="userpass" id="password" placeholder="Enter Password" required><br>
+                <a href="../forgot-password" class="forgotpass">Forgot Password?</a><br>
+                <br>
+                <input type="submit" value="Sign In"><br><br>
+                <p>Don't have an account? <button id="linksignup" onclick="changesign()">Sign up</button></p>
+            </form>
+
+            <form action="../registeruser/" method="post" id="signup">
+                {% csrf_token %}
+                Name <br>
+                <input type="text" name="user-name" id="username" placeholder="Enter your name" required>
+                Email
+                <img src="{% static 'media/Email.png' %}" alt="" id="mailimg">
+                <input type="email" name="useremail" id="emailid" placeholder="someone@mail.com" required><br>
+                Password
+                <img src="{% static 'media/Lock.png' %}" alt="" id="lockimg">
+                <input type="password" name="userpass" id="password" placeholder="Enter Password" required><br>
+                <br>
+                <input type="submit" value="Sign Up">
+
+            </form>
+        </div>
+        <i class="fa-sharp fa-solid fa-xmark" id="sign-cross" onclick="closeSignIn()"></i>
+    </section>
+
+</body>
+</html>

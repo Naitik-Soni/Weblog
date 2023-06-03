@@ -1,0 +1,110 @@
+.readblog{
+    position: sticky;
+    box-sizing: border-box;
+    width: 70%;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    margin: 100px 20px 20px 20px;
+    padding: 20px 50px;
+    overflow-x: hidden;
+}
+
+.details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details .user{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.details .fa-share-nodes{
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.blog{
+    display: block;
+}
+
+.blog h1{
+    margin: 20px 0;
+    font-size: 2.5rem;
+}
+
+.blog .img{
+    text-align: center;
+    margin: 20px 0;
+}
+
+.blog .img img{
+    height: 360px;
+    width: auto;
+}
+
+.blogs{
+    scrollbar-width: none;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    width: calc(100% - 40px - 70%);
+    background-color: rgb(255, 255, 255);
+    min-height: calc(100vh - 80px);
+    position: fixed;
+    top: 80px;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.blogs::-webkit-scrollbar {
+    display: none;
+  }
+
+.blogs .blogpost{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.blogs .blogpost div{
+    max-height: 100px;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+
+.blogs .blogpost img{
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+@media(max-width: 920px){
+    .blogs{
+        display: none;
+    }
+
+    .readblog{
+        width: 100%;
+        margin: 60px 0 0 0;
+        border-radius: 0;
+        padding: 10px 20px;
+    }
+
+    .details .user img{
+        width: 40px;
+        height: 40px;
+    }
+
+    .blog .img img{
+        height: 220px;
+        width: auto;
+    }
+}
