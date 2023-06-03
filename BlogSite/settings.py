@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://blogofnaitik.azurewebsites.net/']
+CSRF_COOKIE_ENABLED = False
 
 ROOT_URLCONF = 'BlogSite.urls'
 
