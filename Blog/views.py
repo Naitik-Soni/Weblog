@@ -205,7 +205,7 @@ def sendMail(request, email):
     msg.set_content('\n\n')
 
     email_pass = ""
-    for i in lar:
+    for i in EMAIL_PASS:
         email_pass += chr(ord(i)-3)
 
     msg.add_alternative("""\n\n
