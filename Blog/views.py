@@ -10,7 +10,7 @@ import smtplib
 from email.message import EmailMessage
 
 EMAIL_USER = "naitiksoni1705@gmail.com"
-EMAIL_PASS = "eicnacedfew gevgaiyeyhdpqmls edwefwiijewoinue"
+EMAIL_PASS = "eicnacedfewgevgaiyeyhdpqmlsedwefwiijewoinue"
 
 # Create your views here.
 def serveHomePage(request):
