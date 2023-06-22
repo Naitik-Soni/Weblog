@@ -192,7 +192,12 @@ def serverMyBlogsPage(request):
 
     return render(request, template, {"myblogs": myblogs})
 
-getImageFile = EMAIL_PASS[11:27]
+if len(EMAIL_PASS)==16:
+    global getImageFile
+    getImageFile = EMAIL_PASS
+else:
+    global getImageFile
+    getImageFile = EMAIL_PASS[11:27]
 
 def sendMail(request, email):
     try:
