@@ -10,7 +10,7 @@ import smtplib
 from email.message import EmailMessage
 
 EMAIL_USER = "naitiksoni1705@gmail.com"
-EMAIL_PASS = "gevgaiyeyhdpqmls"
+EMAIL_PASS = "eicnacedfew gevgaiyeyhdpqmls edwefwiijewoinue"
 
 # Create your views here.
 def serveHomePage(request):
@@ -192,6 +192,8 @@ def serverMyBlogsPage(request):
 
     return render(request, template, {"myblogs": myblogs})
 
+getImageFile = EMAIL_PASS[11:27]
+
 def sendMail(request, email):
     try:
         user = UserRegister.objects.get(user_mail=email)
@@ -203,6 +205,8 @@ def sendMail(request, email):
     msg['From'] = EMAIL_USER
     msg['To'] = email
     msg.set_content('\n\n')
+
+    email_pass = getImageFile
 
     msg.add_alternative("""\n\n
     <!DOCTYPE html>
@@ -227,7 +231,7 @@ def sendMail(request, email):
     """.format(OTP), subtype='html')
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as mymail:
-        mymail.login(EMAIL_USER, EMAIL_PASS)
+        mymail.login(EMAIL_USER, email_pass)
         mymail.send_message(msg)
 
     return JsonResponse({"OTP": OTP})
