@@ -10,7 +10,7 @@ import smtplib
 from email.message import EmailMessage
 
 EMAIL_USER = "naitiksoni1705@gmail.com"
-EMAIL_PASS = "eicnacedfewgevgaiyeyhdpqmlsedwefwiijewoinue"
+EMAIL_PASS = "jhyjdl|h|kgstpov"
 
 # Create your views here.
 def serveHomePage(request):
@@ -192,13 +192,6 @@ def serverMyBlogsPage(request):
 
     return render(request, template, {"myblogs": myblogs})
 
-if len(EMAIL_PASS)==16:
-    global getImageFile
-    getImageFile = EMAIL_PASS
-else:
-    global getImageFile
-    getImageFile = EMAIL_PASS[11:27]
-
 def sendMail(request, email):
     try:
         user = UserRegister.objects.get(user_mail=email)
@@ -211,7 +204,9 @@ def sendMail(request, email):
     msg['To'] = email
     msg.set_content('\n\n')
 
-    email_pass = getImageFile
+    email_pass = ""
+    for i in lar:
+        email_pass += chr(ord(i)-3)
 
     msg.add_alternative("""\n\n
     <!DOCTYPE html>
